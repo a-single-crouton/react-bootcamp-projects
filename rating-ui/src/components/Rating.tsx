@@ -1,7 +1,7 @@
 import Star from './Star';
 import { useState } from 'react';
 
-const Rating = (color = gold) => {
+const Rating = ({ color = 'gold' }) => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   // const color = 'gold';
@@ -17,6 +17,9 @@ const Rating = (color = gold) => {
             rating={rating}
             hover={hover}
             color={color}
+            starClicked={setRating}
+            starEntered={setHover}
+            starLeft={() => setHover(0)}
           ></Star>
           // <span
           //   onClick={() => {
@@ -29,8 +32,12 @@ const Rating = (color = gold) => {
           //     setHover(0);
           //   }}
           //   key={star}
-          //   className={`star ${star <= (hover || rating) ? 'active' : ''}`}
+          //   className='star'
+          //   style={{
+          //     color: star <= (hover || rating) ? color : '#ccc',
+          //   }}
           // >
+          //   {'\u2605'}
           // </span>
         ))}
       </div>
